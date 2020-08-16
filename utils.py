@@ -21,7 +21,7 @@ def pad_sents_char(sents, char_pad_token):
         Output shape: (batch_size, max_sentence_length, max_word_length)
     """
     # Words longer than 21 characters should be truncated
-    max_word_length = 23
+    max_word_length = 21
 
     ### YOUR CODE HERE for part 1b
     ### TODO:
@@ -40,10 +40,10 @@ def pad_sents_char(sents, char_pad_token):
         words_padded = []
         for word in sent:
             w_padded = [char_pad_token] * max_word_length
-            w_padded[:min(max_word_length, len(word))] = word
+            w_padded[:min(max_word_length, len(word))] = word[:min(max_word_length, len(word))]
             words_padded.append(w_padded)
         s_padded = [[char_pad_token] * max_word_length] * max_sent_length
-        s_padded[:len(words_padded)] = words_padded
+        s_padded[:min(len(words_padded), max_sent_length)] = words_padded[:min(len(words_padded), max_sent_length)]
         sents_padded.append(s_padded)
     ### END YOUR CODE
 
