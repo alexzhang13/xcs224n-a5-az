@@ -21,7 +21,7 @@ def pad_sents_char(sents, char_pad_token):
         Output shape: (batch_size, max_sentence_length, max_word_length)
     """
     # Words longer than 21 characters should be truncated
-    max_word_length = 21 
+    max_word_length = 23
 
     ### YOUR CODE HERE for part 1b
     ### TODO:
